@@ -77,6 +77,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -91,6 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -103,6 +105,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -117,6 +120,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -125,14 +129,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="2InputSystem\InputSystem.cpp" />
+    <ClCompile Include="3NodeMap\INodeContent.cpp" />
+    <ClCompile Include="3NodeMap\Node.cpp" />
+    <ClCompile Include="3NodeMap\NodeMap.cpp" />
+    <ClCompile Include="dist\jsoncpp.cpp" />
     <ClCompile Include="Utils\ConsoleControl.cpp" />
     <ClCompile Include="Treads1.cpp" />
+    <ClCompile Include="Utils\Timer.cpp" />
+    <ClCompile Include="3NodeMap\Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="1TutorialThread\ThreadTutorial.h" />
     <ClInclude Include="2InputSystem\InputConst.h" />
     <ClInclude Include="2InputSystem\InputSystem.h" />
+    <ClInclude Include="3NodeMap\INodeContent.h" />
+    <ClInclude Include="3NodeMap\Node.h" />
+    <ClInclude Include="3NodeMap\NodeMap.h" />
+    <ClInclude Include="dist\json\json-forwards.h" />
+    <ClInclude Include="dist\json\json.h" />
     <ClInclude Include="Utils\ConsoleControl.h" />
+    <ClInclude Include="Utils\Timer.h" />
+    <ClInclude Include="3NodeMap\Vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
