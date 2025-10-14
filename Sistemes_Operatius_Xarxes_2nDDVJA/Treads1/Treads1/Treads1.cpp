@@ -8,6 +8,8 @@
 #include "Utils/Timer.h"
 #include "3NodeMap/Node.h"
 #include "3NodeMap/NodeMap.h"
+#include "4Json/Banana.h"
+#include "4Json/Manzana.h"
 
 #include <functional>
 #include <string>
@@ -25,7 +27,7 @@ void TestLambdasMolonas(SumaFuncion funcionMolona)
 	std::cout << "Ya la he ejecutado y ha devuelto --> " << number << std::endl;
 }*/
 
-
+/*
 class Tree : public INodeContent
 {
 	void Draw(Vector2 offset) override
@@ -38,12 +40,12 @@ class Tree : public INodeContent
 		CC::Unlock();
 	}
 };
-
+*/
 /*class Potatoe
 {
 	
 };*/
-
+/*
 class Player // :Codable --> Serializable + Deserializable
 {
 public:
@@ -71,7 +73,7 @@ public:
 
 		return json;
 	}
-};
+};*/
 
 int main()
 {
@@ -204,17 +206,48 @@ int main()
 	iS->StartListen();
 	*/
 
-	Player* player = new Player();
-	player->life = 100;
-	player->name = "Pepe Lluis Llach";
-	player->coins = 250;
+	ICodable::SaveDecodeProcess<Banana>();
+	ICodable::SaveDecodeProcess<Banana>();
 
-	Json::Value newJson;
+	std::vector<Fruta*> frutas
+	{
+		new Banana(),
+		new Manzana(),
+		new Banana()
+	};
 
-	newJson["Player"] = player->Encode();
+	Json::Value jsonArray = Json::Value(Json::arrayValue);
 
-	std::ofstream* file = new std::ofstream("player.json", std::ios::binary);
+	for (Fruta* fruta : frutas)
+	{
+		jsonArray.append(fruta->Code());
+	}
 
+	std::ofstream jsonWriterFile = std::ofstream("FrutasTest.json", std::ios::binary);
+
+	if (!jsonWriterFile.fail())
+	{
+		jsonWriterFile << jsonArray;
+		jsonWriterFile.close();
+	}
+
+	std::cout << "Finish Write" << std::endl;
+
+	std::ifstream jsonReadFile = std::ifstream("FrutasTest.json", std::ios::binary);
+	std::vector<Fruta*> readFrutas;
+
+	if (!jsonReadFile.fail())
+	{
+		Json::Value readedJson;
+
+		jsonReadFile >> readedJson;
+
+		for (Json::Value value : readedJson)
+		{
+			Fruta* f = ICodable::FromJson<Fruta>(value);
+			readFrutas.push_back(f);
+		}
+	}
 
 
 	while (true) {}
